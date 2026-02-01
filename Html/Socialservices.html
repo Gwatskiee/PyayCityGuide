@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Home Page</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background-color: gray;
+            color: #fff;
+            margin-top: 75px;
+        }
+
+        /* ===== NAVBAR ===== */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 60px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            /* animation: slideDown 1s ease; */
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 400;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            left: 0;
+            bottom: -5px;
+            background: white;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-content {
+            max-width: 700px;
+            animation: fadeUp 1.5s ease;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero button {
+            padding: 12px 30px;
+            font-size: 16px;
+            border: none;
+            background: white;
+            color: black;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .hero button:hover {
+            background: #ddd;
+            transform: scale(1.05);
+        }
+
+        /* ===== MOBILE MENU ===== */
+        .menu-toggle {
+            display: none;
+            font-size: 26px;
+            cursor: pointer;
+        }
+        /* ===== MAIN LAYOUT ===== */
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+
+/* ===== LEFT SIDEBAR ===== */
+.sidebar {
+    width: 260px;
+    background: #ffffff;
+    border-right: 2px solid #ddd;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.sidebar-item {
+    text-align: center;
+    margin-bottom: 30px;
+    cursor: pointer;
+}
+
+.sidebar-item img {
+    width: 60px;
+    margin-bottom: 10px;
+}
+
+.sidebar-item p {
+    font-size: 18px;
+    color: purple;
+    margin: 0;
+}
+p{
+    color: black;
+}
+
+/* ===== RIGHT CONTENT ===== */
+.content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+/* ===== CARD GRID ===== */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* ===== CARD ===== */
+.card {
+    background: #fff;
+    border: 1px solid #999;
+    padding: 15px;
+    min-height: 180px;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.card-header img {
+    width: 40px;
+}
+
+.card-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 8px 0;
+}
+
+.card-row img {
+    width: 28px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    .sidebar-item {
+        width: 45%;
+    }
+}
+
+        
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 30px;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                right: 0;
+                background: rgba(0, 0, 0, 0.8);
+                flex-direction: column;
+                width: 200px;
+                display: none;
+                padding: 20px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="logo">Pyay City Guide</div>
+        <div class="menu-toggle" id="menuToggle">☰</div>
+        <div class="nav-links" id="navLinks">
+            <a href="Home.html">Home</a>
+            <a href="Pagodas.html">Pagodas</a>
+            <a href="Museums.html">Museums</a>
+            <a href="Foods.html">Foods</a>
+            <a href="Activities.html">Activities</a>
+            <a href="Education.html">Education</a>
+            <a href="Socialservices.html">Social Services</a>
+        </div>
+    </nav>
+</header>
+
+<div class="container">
+
+    <!-- LEFT CATEGORY MENU -->
+    <div class="sidebar">
+        <div class="sidebar-item">
+            <img src="https://cdn-icons-png.flaticon.com/512/2967/2967350.png">
+            <p>Hospitals</p>
+        </div>
+
+        <div class="sidebar-item">
+            <img src="https://cdn-icons-png.flaticon.com/512/2991/2991113.png">
+            <p>Police & Fire</p>
+        </div>
+
+        <div class="sidebar-item">
+            <img src="https://cdn-icons-png.flaticon.com/512/3075/3075977.png">
+            <p>Restaurants</p>
+        </div>
+
+        <div class="sidebar-item">
+            <img src="https://cdn-icons-png.flaticon.com/512/139/139899.png">
+            <p>Hotels & Motels</p>
+        </div>
+
+        <div class="sidebar-item">
+            <img src="https://cdn-icons-png.flaticon.com/512/2830/2830284.png">
+            <p>Banks</p>
+        </div>
+    </div>
+
+    <!-- RIGHT CARDS -->
+    <div class="content">
+
+        <div class="grid">
+
+            <!-- CARD 1 -->
+            <div class="card">
+                <div class="card-header">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2967/2967350.png">
+                    <p>General Hospital</p>
+                </div>
+
+                <div class="card-row">
+                    <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png">
+                    <p>Downtown Township</p>
+                </div>
+
+                <div class="card-row">
+                    <img src="https://cdn-icons-png.flaticon.com/512/455/455705.png">
+                   <p>+012345</p>
+                </div>
+            </div>
+
+            <!-- CARD 2 -->
+            <div class="card">
+                <div class="card-header">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2830/2830284.png">
+                   <p> A Bank</p>
+                </div>
+
+                <div class="card-row">
+                    <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png">
+                   <p> Main Street Branch</p>
+                </div>
+
+                <div class="card-row">
+                    <img src="https://cdn-icons-png.flaticon.com/512/455/455705.png">
+                    <p>05325663</p>
+                </div>
+            </div>
+
+            <!-- CARD 3 -->
+            <div class="card">
+                <div class="card-header">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2830/2830284.png">
+                    <p>AYA Bank</p>
+                </div>
+
+                <div class="card-row">
+                    <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png">
+                   <p> City Center</p>
+                </div>
+
+                <div class="card-row">
+                    <img src="https://cdn-icons-png.flaticon.com/512/455/455705.png">
+                    <p>05329500</p>
+                </div>
+            </div>
+
+            <!-- CARD 4 -->
+            <div class="card">
+                <div class="card-header">
+                    <img src="https://cdn-icons-png.flaticon.com/512/2830/2830284.png">
+                   <p> KBZ Bank</p>
+                </div>
+
+                <div class="card-row">
+                    <img src="https://cdn-icons-png.flaticon.com/512/684/684908.png">
+                   <p> Market Road</p>
+                </div>
+
+                <div class="card-row">
+                    <img src="https://cdn-icons-png.flaticon.com/512/455/455705.png">
+                    <p>09951018555</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+</body>
+
+<script>
+    const menuToggle = document.getElementById("menuToggle");
+    // const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+    });
+
+   
+</script>
+
+</body>
+</html>
+☰
+
+Hospitals
+

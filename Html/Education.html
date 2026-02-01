@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Home Page</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background-color: gray;
+            color: #fff;
+            margin-top: 75px;
+        }
+
+        /* ===== NAVBAR ===== */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 60px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            /* animation: slideDown 1s ease; */
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 400;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            left: 0;
+            bottom: -5px;
+            background: white;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-content {
+            max-width: 700px;
+            animation: fadeUp 1.5s ease;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero button {
+            padding: 12px 30px;
+            font-size: 16px;
+            border: none;
+            background: white;
+            color: black;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .hero button:hover {
+            background: #ddd;
+            transform: scale(1.05);
+        }
+
+        
+/* ---------- HEADER ---------- */
+.header {
+    background: #fffefe;
+    padding: 25px;
+    text-align: center;
+}
+
+.header h1 {
+    margin: 0;
+    letter-spacing: 4px;
+    color: #000;
+}
+
+/* ---------- CONTAINER ---------- */
+.container {
+    width: 95%;
+    margin: 40px auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+/* ---------- CARD ---------- */
+.card {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card img {
+    width: 100%;
+    height: 220px;
+    object-fit: contain;
+    margin-bottom: 15px;
+}
+
+/* ---------- TEXT ---------- */
+.card h3 {
+    margin: 10px 0;
+}
+
+.card p {
+    margin: 6px 0;
+    font-size: 14px;
+    line-height: 1.5;
+    color: #000;
+}
+
+.location {
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+.see-more {
+    margin-top: auto;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+        /* ---------- RESPONSIVE ---------- */
+@media (max-width: 1200px) {
+    .container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .container {
+        grid-template-columns: 1fr;
+    }
+
+    .header h1 {
+        font-size: 20px;
+        letter-spacing: 2px;
+    }
+}
+
+        /* ===== MOBILE MENU ===== */
+        .menu-toggle {
+            display: none;
+            font-size: 26px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 30px;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                right: 0;
+                background: rgba(0, 0, 0, 0.8);
+                flex-direction: column;
+                width: 200px;
+                display: none;
+                padding: 20px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="logo">Pyay City Guide</div>
+        <div class="menu-toggle" id="menuToggle">☰</div>
+        <div class="nav-links" id="navLinks">
+            <a href="Home.html">Home</a>
+            <a href="Pagodas.html">Pagodas</a>
+            <a href="Museums.html">Museums</a>
+            <a href="Foods.html">Foods</a>
+            <a href="Activities.html">Activities</a>
+            <a href="Education.html">Education</a>
+            <a href="Socialservices.html">Social Services</a>
+        </div>
+    </nav>
+</header>
+
+<!-- HEADER -->
+<div class="header">
+    <h1>Universities & Colleges in Pyay</h1>
+</div>
+
+<!-- CARDS -->
+<div class="container">
+
+    <!-- Card 1 -->
+    <div class="card">
+        <img src="../images/nn/logo1.jpg" alt="">
+        <h3>Pyay Technological University</h3>
+        <p class="location">Location</p>
+        <p>Pauk Khung Street, PaungTaMauk Village Group, Pyay</p>
+        <a href="#" class="see-more">See More</a>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+        <img src="../images/nn/logo2.jpg" alt="">
+        <h3>Pyay Computer University</h3>
+        <p class="location">Location</p>
+        <p>Pyay–Aunglan Main Road, Pyay Western</p>
+        <a href="#" class="see-more">See More</a>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card">
+        <img src="../images/nn/logo3.png" alt="">
+        <h3>Pyay University</h3>
+        <p class="location">Location</p>
+        <p>Shwe Tachaung Street, Nawin Quarter, Pyay</p>
+        <p><em>email: pyiuniversity@gmail.com</em></p>
+        <a href="#" class="see-more">See More</a>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card">
+        <img src="../images/nn/logo4.png" alt="">
+        <h3>Pyay Education Degree College</h3>
+        <p class="location">Location</p>
+        <p>Pyay–Aunglan Road, Tee Took Village, Pyay</p>
+        <a href="#" class="see-more">See More</a>
+    </div>
+
+</div>
+
+
+<script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+    });
+
+   
+</script>
+
+</body>
+</html>

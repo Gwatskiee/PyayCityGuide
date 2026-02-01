@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Home Page</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background-color: gray;
+            color: #fff;
+        }
+
+        /* ===== NAVBAR ===== */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 60px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            /* animation: slideDown 1s ease; */
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 400;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            left: 0;
+            bottom: -5px;
+            background: white;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-content {
+            max-width: 700px;
+            animation: fadeUp 1.5s ease;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero button {
+            padding: 12px 30px;
+            font-size: 16px;
+            border: none;
+            background: white;
+            color: black;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .hero button:hover {
+            background: #ddd;
+            transform: scale(1.05);
+        }
+
+        h4{
+            color: black;
+        }
+
+        /* ===== MOBILE MENU ===== */
+        .menu-toggle {
+            display: none;
+            font-size: 26px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 30px;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                right: 0;
+                background: rgba(0, 0, 0, 0.8);
+                flex-direction: column;
+                width: 200px;
+                display: none;
+                padding: 20px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        h2 {
+    text-align: center;
+    margin: 50px 0 20px;
+    font-size: 32px;
+}
+
+/* ----------- CONTAINER ----------- */
+.container {
+    width: 90%;
+    margin: auto;
+}
+
+/* ----------- POPULAR FOOD ----------- */
+.popular-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.popular-grid.bottom {
+    grid-template-columns: repeat(2, 1fr);
+    margin-top: 20px;
+}
+
+.popular-card {
+    position: relative;
+    height: 250px;
+    border-radius: 15px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.popular-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.popular-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    padding: 20px;
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.popular-card:hover .popular-overlay {
+    opacity: 1;
+}
+
+.popular-overlay h3 {
+    margin-top: 0;
+}
+
+.popular-overlay ul {
+    padding-left: 18px;
+}
+
+/* ----------- STREET FOOD ----------- */
+.street-container {
+    width: 90%;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+    margin-bottom: 60px;
+}
+
+.street-card {
+    background: #ffffff;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    transition: 0.3s ease;
+    cursor: pointer;
+}
+
+.street-card:hover {
+    transform: translateY(-8px);
+}
+
+.street-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.street-card h4 {
+    text-align: center;
+    padding: 15px;
+    margin: 0;
+    font-size: 18px;
+    background: #fff;
+}
+
+
+        @media (max-width: 992px) {
+    .street-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .street-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* ----------- RESPONSIVE ----------- */
+@media (max-width: 992px) {
+    .popular-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .popular-grid.bottom {
+        grid-template-columns: 1fr;
+    }
+    .street-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .popular-grid,
+    .popular-grid.bottom,
+    .street-grid {
+        grid-template-columns: 1fr;
+    }
+}
+    </style>
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="logo">Pyay City Guide</div>
+        <div class="menu-toggle" id="menuToggle">☰</div>
+        <div class="nav-links" id="navLinks">
+            <a href="Home.html">Home</a>
+            <a href="Pagodas.html">Pagodas</a>
+            <a href="Museums.html">Museums</a>
+            <a href="Foods.html">Foods</a>
+            <a href="Activities.html">Activities</a>
+            <a href="Education.html">Education</a>
+            <a href="Socialservices.html">Social Services</a>
+        </div>
+    </nav>
+</header>
+
+<h2>Popular Food</h2>
+<div class="container">
+
+    <!-- Top 4 -->
+    <div class="popular-grid">
+        <div class="popular-card">
+            <img src="../images/pic/11.jpg">
+            <div class="popular-overlay">
+                <h3>Rice-Salad</h3>
+                <address>ဒေါ်ဉ - အမှတ် (၃၈၇)၊ ပွဲစားလမ်း၊ ပြည်မြို့၊၊<br>ph:09-785311729</address>
+                <ul>
+                    <li>Rice</li>
+                    <li>Spice</li>
+                    <li>Egg</li>
+                    <li>Some leaves</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="popular-card">
+            <img src="../images/pic/12.jpg">
+            <div class="popular-overlay">
+                <h3>Starchy gravy noodle</h3>
+                <address>လမ်းရှည်လမ်း သုံးရာသီစားသောက်ဆိုင်</address>
+
+                <ul>
+                    <li>noodle</li>
+                    <li>Kaw Yae</li>
+                    <li>Ei Kyar Kway</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="popular-card">
+            <img src="../images/pic/13.jpg">
+            <div class="popular-overlay">
+                <h3>Chicken Platter</h3>
+                <address>မွတ်တားလေး - မြောက်စောင်းတန်းလမ်းမပေါ်၊ ပြည်မြို့၊<br>ph-09972941449</address>
+                <ul>
+                    <li>Chicken</li>
+                    <li>Palatar</li>
+                    <li>Vegetables</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="popular-card">
+            <img src="../images/logo/kts.jpg">
+            <div class="popular-overlay">
+                <h3>Kyat Thout San</h3>
+                <address>မူလရွှေပြည် - န၀ဒေးတံတားအဆင်း<br>ph-09796996190</address>
+                <ul>
+                    <li>Chicken</li>
+                    <li>Arr Pu Ywet</li>
+                    <li>Spices</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom 2 -->
+    <div class="popular-grid bottom">
+        <div class="popular-card">
+            <img src="../images/pic/14.jpg">
+            <div class="popular-overlay">
+                <h3>Mont Hin Gar</h3>
+                <address>ရွှေဆံတော်ဘုရား ခြေရင်း</address><br>
+                <ul>
+                    <li>Mhone Phar</li>
+                    <li>Pel Hin Yay</li>
+                    <li>Spice</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="popular-card">
+            <img src="../images/nn/f14.jpg">
+            <div class="popular-overlay">
+                <h3>Sai Pan Thoke</h3>
+                <address>ပန်းပဲတန်းလမ်း</address><br>
+                <ul>
+                    <li>SeinPan</li>
+                    <li>Garlic</li>
+                    <li>Spice</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<!-- ================= STREET FOOD ================= -->
+<h2>Street Food</h2>
+
+<div class="street-container">
+
+    <div class="street-card">
+        <img src="../images/LG/s1.jpg">
+        <h4>မုန့်ဗိုင်းဒေါင့်/Mhon Bine Daung</h4>
+    </div>
+
+    <div class="street-card">
+        <img src="../images/LG/s2.jpg">
+        <h4>မုန့်ပြားသလပ်/Mhon Pyar Thalat</h4>
+    </div>
+
+    <div class="street-card">
+        <img src="../images/LG/s3.jpg">
+        <h4>မုန့်လက်ဆောင်/Mhon Lat Saung</h4>
+    </div>
+
+    <div class="street-card">
+        <img src="../images/LG/s4.jpg">
+        <h4>ရွှေကြည်/Shwe Kyi</h4>
+    </div>
+
+    <div class="street-card">
+        <img src="../images/LG/s5.jpg">
+        <h4>ကောက်ညှင်းထုပ်/Kauk Hyin htoke</h4>
+    </div>
+
+    <div class="street-card">
+        <img src="../images/LG/s6.jpg">
+        <h4>ရေမုန့်/Yay Mhone</h4>
+    </div>
+
+    <div class="street-card">
+        <img src="../images/nn/K1.jfif">
+        <h4>ကရေကရာ/Kaya Kayar</h4>
+    </div>
+
+    <div class="street-card">
+        <img src="../images/LG/s8.jpg">
+        <h4>ယိုစုံ/Yoe Sone</h4>
+    </div>
+
+    <div class="street-card">
+        <img src="../images/LG/s9.jpg">
+        <h4>မြေပဲယို/Myae Pel Yoe</h4>
+    </div>
+
+    <div class="street-card">
+        <img src="../images/LG/s10.jpg">
+        <h4>ဘိန်းမုန့်/Bane Mhone</h4>
+    </div>
+
+    <div class="street-card">
+        <img src="../images/LG/s13.jpg">
+        <h4>တောလက်ဖက်/Taw Latphat</h4>
+    </div>
+
+    <div class="street-card">
+        <img src="../images/LG/s14.jpg">
+        <h4>ဖရုံယို/Pha Yone Yoe</h4>
+    </div>
+
+</div>
+
+
+
+<script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+    });
+
+   
+</script>
+
+</body>
+</html>

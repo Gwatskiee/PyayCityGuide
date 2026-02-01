@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Home Page</title>
+
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            height: 100vh;
+            background: url("../images/nn/cc.jpg") no-repeat center center/cover;
+            color: #fff;
+        }
+
+        /* ===== NAVBAR ===== */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 60px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            animation: slideDown 1s ease;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: 1px;
+          
+            position: relative;
+            animation: fadeColor 4s infinite  ease-in-out;
+        }
+
+        .orbit{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 260px;
+            height: 60px;
+            transform: translate(-50%, -50%);
+            animation: spin 6s linear infinite;
+
+        }
+        .car{
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 22px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: white;
+            font-weight: 400;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            left: 0;
+            bottom: -5px;
+            background: white;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .hero-content {
+            max-width: 700px;
+            animation: fadeUp 1.5s ease;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+
+        .hero button {
+            padding: 12px 30px;
+            font-size: 16px;
+            border: none;
+            background: white;
+            color: black;
+            cursor: pointer;
+            border-radius: 30px;
+            transition: transform 0.3s, background 0.3s;
+        }
+
+        .hero button:hover {
+            background: #ddd;
+            transform: scale(1.05);
+        }
+
+        /* ===== MOBILE MENU ===== */
+        .menu-toggle {
+            display: none;
+            font-size: 26px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px 30px;
+            }
+
+            .nav-links {
+                position: absolute;
+                top: 70px;
+                right: 0;
+                background: rgba(0, 0, 0, 0.8);
+                flex-direction: column;
+                width: 200px;
+                display: none;
+                padding: 20px;
+            }
+
+            .nav-links.active {
+                display: flex;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeUp {
+            from {
+                transform: translateY(40px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeColor{
+            0%{
+                opacity: 0;
+                color: #ffffff;
+            }
+            25%{
+                opacity: 1;
+                color: #b7d3ef;
+            }
+            50%{
+                opacity: 1;
+                color: #f0eac9;
+            }
+            75%{
+                opacity: 1;
+                color: #edfadf;
+            }
+            100%{
+                opacity: 0;
+                color: #ffffff;
+            }
+        }
+
+        @keyframes spin{
+            from{
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            to{
+                 transform: translate(-50%, -50%) rotate(360deg);
+            }
+            }
+        
+    </style>
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        <div class="logo">Pyay City Guide</div>
+        <!-- car -->
+         <!-- <div class="orbit">
+            <span class="car">0-0</span>
+         </div> -->
+        <div class="menu-toggle" id="menuToggle">☰</div>
+        <div class="nav-links" id="navLinks">
+            <a href="Home.html">Home</a>
+            <a href="Pagodas.html">Pagodas</a>
+            <a href="Museums.html">Museums</a>
+            <a href="Foods.html">Foods</a>
+            <a href="Activities.html">Activities</a>
+            <a href="Education.html">Education</a>
+            <a href="Socialservices.html">Social Services</a>
+        </div>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="hero-content">
+        <h1>Welcome to Pyay City Guide</h1>
+        <p>Lets discover some great stuff & places for entertainment,eat & shop.</p>
+       
+    </div>
+</section>
+
+<script>
+    const menuToggle = document.getElementById("menuToggle");
+    const navLinks = document.getElementById("navLinks");
+
+    menuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+    });
+
+   
+</script>
+
+</body>
+</html>
